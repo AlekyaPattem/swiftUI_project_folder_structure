@@ -8,14 +8,22 @@
 import SwiftUI
 
 struct ContentView: View {
+    
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
+        ZStack {
+            VStack(spacing: 20) {
+                LottieView(name: "splash")
+                                .frame(width: 200, height: 200)
+                
+                Button("Show Loader") {
+                    LoaderManager.shared.showLoader(text: "loading")
+                }
+                
+                Button("Show Toast") {
+                    ToastManager.shared.show("Hello, this is a toast! 🎉")
+                }
+            }
         }
-        .padding()
     }
 }
 
