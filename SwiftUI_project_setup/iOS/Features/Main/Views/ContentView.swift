@@ -16,11 +16,34 @@ struct ContentView: View {
                                 .frame(width: 200, height: 200)
                 
                 Button("Show Loader") {
-                    LoaderManager.shared.showLoader(text: "loading")
+//                    LoaderManager.shared.showLoader(text: "loading")
+                    AlertManager.shared.showAlert(
+                                        title: "Info",
+                                        message: "This is a global info alert."
+                                    )
                 }
                 
                 Button("Show Toast") {
-                    ToastManager.shared.show("Hello, this is a toast! 🎉")
+                    AlertManager.shared.showAlert(
+                        title: "Logout",
+                        message: "Are you sure you want to log out?",
+                        okText: "Logout",
+                        cancelText: "Cancel",
+                        okAction: { print("Logged out") },
+                        cancelAction: { print("Canceled") }
+                    )
+//                    ToastManager.shared.show("Hello, this is a toast! 🎉")
+                }
+                
+                Button("show alertt"){
+                    AlertManager.shared.showAlert(
+                        title: "Delete",
+                        message: "This action cannot be undone.",
+                        okText: "Delete",
+                        cancelText: "Cancel",
+                        isDestructive: true,
+                        okAction: { print("Deleted!") }
+                    )
                 }
             }
         }

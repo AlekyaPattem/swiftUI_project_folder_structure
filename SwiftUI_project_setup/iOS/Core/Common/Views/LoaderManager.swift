@@ -39,7 +39,7 @@ struct LottieView: UIViewRepresentable {
 
 
 // MARK: - Global Loader Store (Singleton)
-@MainActor
+
 final class LoaderManager: ObservableObject {
     
     static let shared = LoaderManager()

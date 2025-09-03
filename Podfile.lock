@@ -1,16 +1,20 @@
 PODS:
   - lottie-ios (4.5.2)
+  - ReachabilitySwift (5.2.4)
 
 DEPENDENCIES:
   - lottie-ios
+  - ReachabilitySwift (~> 5.2.4)
 
 SPEC REPOS:
   trunk:
     - lottie-ios
+    - ReachabilitySwift
 
 SPEC CHECKSUMS:
   lottie-ios: 96784afc26ea031d3e2b6cae342a4b8915072489
+  ReachabilitySwift: 32793e867593cfc1177f5d16491e3a197d2fccda
 
-PODFILE CHECKSUM: dcb009d3906d8c37a1cd25036f10c0eda0f6a316
+PODFILE CHECKSUM: bbb7be3af7aaf0d129f5af1d0d3f61c6e83c0604
 
 COCOAPODS: 1.16.2
