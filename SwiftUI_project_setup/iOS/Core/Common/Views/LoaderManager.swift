@@ -92,7 +92,7 @@ private struct LoaderOverlay: View {
                         if let message = loader.text, !message.isEmpty {
                             Text(message)
                                 .font(.system(size: 15, weight: .bold))
-                                .foregroundColor(ColorConstants.gray)
+                                .foregroundColor(ColorConstants.descGray)
                                 .multilineTextAlignment(.center)
                         }
                     }
