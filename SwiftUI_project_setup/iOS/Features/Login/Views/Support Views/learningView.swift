@@ -79,7 +79,8 @@ struct learningView: View {
         .onAppear {
             pets.append(Pet(name: "cat", image: "cat")) // ✅ runs once when view appears
         }
-//        
+        .background(.white)
+//
 //        ForEach(pets){pet in
 //            PetRowView(pet: pet)
 //        }
@@ -93,10 +94,12 @@ struct learningView: View {
         Button("Add Pet") {
             pets.append(Pet(name: "cat", image: "cat")) // ✅ Works
         }
-//        
+        .background(.red)
+//
         List{
             Section("My pets"){
                 ForEach(pets){pet in
+                    
                     PetRowView(pet: pet)
                         .swipeActions(edge: .leading){
 //                            VStack{
@@ -108,12 +111,26 @@ struct learningView: View {
 //                            Button("Award", systemImage: "trophy"){
 //                                print("give Award")
 //                            }
+                            
+                            
                             Button {
                                     print("Edit tapped")
                                 } label: {
-                                    Label("Edit", systemImage: "pencil")
+                                    VStack {
+                                            Image(systemName: "pencil")
+//                                                .font(.title2)
+                                            Text("Edit")
+                                                .font(.caption)
+                                        }
                                 }
-                            .tint(ColorConstants.primaryBlue)
+//                            .tint(ColorConstants.primaryBlue)
+                            .background(LinearGradient(
+                                gradient: Gradient(colors: [.blue, .purple]),
+                                startPoint: .topLeading,
+                                endPoint: .bottomTrailing
+                            ))
+                    
+                    
 //                            .background(
 //                                            LinearGradient(
 //                                                gradient: Gradient(colors: [.blue, .purple]),
@@ -122,6 +139,13 @@ struct learningView: View {
 //                                            )
 //                                        )
                         }
+                        .swipeActions(edge: .trailing) {
+                                            Button(role: .destructive) {
+                                                print("Delete tapped")
+                                            } label: {
+                                                Label("Delete", systemImage: "trash")
+                                            }
+                                        }
                 }
             }
             Section("Other pets"){
@@ -164,6 +188,18 @@ struct PetRowView : View {
             VStack(alignment: .leading){
                 Label(pet.name, systemImage: pet.image)
                 Text("Sireesha")
+                VStack(alignment: .leading){
+                    Label(pet.name, systemImage: pet.image)
+                    Text("Sireesha")
+                }
+            }
+            VStack(alignment: .leading){
+                Label(pet.name, systemImage: pet.image)
+                Text("Sireesha")
+                VStack(alignment: .leading){
+                    Label(pet.name, systemImage: pet.image)
+                    Text("Sireesha")
+                }
             }
             Spacer()
         }

@@ -42,19 +42,19 @@ struct LottieView: UIViewRepresentable {
 
 final class LoaderManager: ObservableObject {
     
-    static let shared = LoaderManager()
-    @Published private(set) var isShowing = false
-    @Published private(set) var text: String? = nil
-    var animationName = "splash"
+    static let shared           = LoaderManager()
+    @Published var isShowing    = false
+    @Published var text         : String? = nil
+    var animationName           = "splash"
     // Prevents flicker when multiple parts of the app show/hide quickly
-    private var counter = 0
-
+    private var counter         = 0
+    
     func showLoader(text: String? = nil) {
         counter += 1
         self.text = text
         self.isShowing = true
     }
-
+    
     func hideLoader() {
         counter = max(0, counter - 1)
         if counter == 0 {
@@ -62,8 +62,8 @@ final class LoaderManager: ObservableObject {
             self.isShowing = false
         }
     }
-
-    /// Use carefully to immediately clear the loader regardless of counter.
+    
+    // Use carefully to immediately clear the loader regardless of counter.
     func forceHideLoader() {
         counter = 0
         text = nil
@@ -74,7 +74,7 @@ final class LoaderManager: ObservableObject {
 // MARK: - Overlay UI
 private struct LoaderOverlay: View {
     @ObservedObject private var loader = LoaderManager.shared
-
+    
     var body: some View {
         Group {
             if loader.isShowing {
@@ -97,11 +97,11 @@ private struct LoaderOverlay: View {
                         }
                     }
                 }
-//                .animation(.easeInOut(duration: 0.2), value: loader.isShowing)
+                //                .animation(.easeInOut(duration: 0.2), value: loader.isShowing)
             }
         }
         // Ensures this overlay always sits above content
-        .allowsHitTesting(loader.isShowing) // blocks touches when showing
+//        .allowsHitTesting(loader.isShowing) // blocks touches when showing
     }
 }
 
@@ -116,7 +116,7 @@ private struct LoaderModifier: ViewModifier {
 }
 
 extension View {
-    /// Add this once at the root of your app UI.
+    // Add this once at the root of your app UI.
     func withLoader() -> some View {
         modifier(LoaderModifier())
     }

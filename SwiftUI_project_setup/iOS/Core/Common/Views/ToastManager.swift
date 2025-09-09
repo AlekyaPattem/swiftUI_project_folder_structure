@@ -11,8 +11,8 @@ import SwiftUI
 final class ToastManager: ObservableObject {
     static let shared = ToastManager()
     
-    @Published private(set) var message: String = ""
-    @Published private(set) var isShowing: Bool = false
+    @Published var message: String = ""
+    @Published var isShowing: Bool = false
     
     private var hideTask: Task<Void, Never>?
     
@@ -64,7 +64,6 @@ private struct ToastModifier: ViewModifier {
     func body(content: Content) -> some View {
         ZStack {
             content
-            
             if toast.isShowing {
                 VStack {
                     Spacer()

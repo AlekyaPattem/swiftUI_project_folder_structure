@@ -10,25 +10,25 @@ import SwiftUI
 class AlertManager: ObservableObject {
     static let shared = AlertManager()
     
-    @Published var isPresented: Bool = false
-    @Published var title: String = ""
-    @Published var message: String = ""
-    @Published var primaryButton: Alert.Button = .default(Text("OK"))
-    @Published var secondaryButton: Alert.Button? = nil
+    @Published var isPresented      : Bool = false
+    @Published var title            : String = ""
+    @Published var message          : String = ""
+    @Published var primaryButton    : Alert.Button = .default(Text("OK"))
+    @Published var secondaryButton  : Alert.Button? = nil
     
     private init() {}
     
     func showAlert(
-        title: String,
-        message: String,
-        okText: String = "OK",
-        cancelText: String? = nil,   // if nil → only OK button
-        isDestructive: Bool = false,
-        okAction: (() -> Void)? = nil,
-        cancelAction: (() -> Void)? = nil
+        title           : String,
+        message         : String,
+        okText          : String = "OK",
+        cancelText      : String? = nil,   // if nil → only OK button
+        isDestructive   : Bool = false,
+        okAction        : (() -> Void)? = nil,
+        cancelAction    : (() -> Void)? = nil
     ) {
-        self.title = title
-        self.message = message
+        self.title      = title
+        self.message    = message
         
         // primary button (OK)
         if isDestructive {
@@ -62,16 +62,16 @@ struct AlertModifier: ViewModifier {
             .alert(isPresented: $alertManager.isPresented) {
                 if let secondary = alertManager.secondaryButton {
                     return Alert(
-                        title: Text(alertManager.title),
-                        message: Text(alertManager.message),
-                        primaryButton: alertManager.primaryButton,
-                        secondaryButton: secondary
+                        title           : Text(alertManager.title),
+                        message         : Text(alertManager.message),
+                        primaryButton   : alertManager.primaryButton,
+                        secondaryButton : secondary
                     )
                 } else {
                     return Alert(
-                        title: Text(alertManager.title),
-                        message: Text(alertManager.message),
-                        dismissButton: alertManager.primaryButton
+                        title           : Text(alertManager.title),
+                        message         : Text(alertManager.message),
+                        dismissButton   : alertManager.primaryButton
                     )
                 }
             }
