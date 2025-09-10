@@ -125,7 +125,7 @@ class NetworkRequest {
             
             guard isInternetAvailable() else {
                 DispatchQueue.main.async {
-//                    UIApplication.topViewController()?.showAlertForNoInternet()
+                    AlertManager.shared.showAlert(title: "No Internet Connection", message: "Please check your internet connection.")
                 }
                 return promise(.failure(.noInternetConnection))
             }
@@ -230,7 +230,7 @@ class NetworkRequest {
             
             guard isInternetAvailable() else {
                 DispatchQueue.main.async {
-//                    UIApplication.topViewController()?.showAlertForNoInternet()
+                    AlertManager.shared.showAlert(title: "No Internet Connection", message: "Please check your internet connection.")
                 }
                 return promise(.failure(.noInternetConnection))
             }
@@ -311,7 +311,6 @@ class NetworkRequest {
                             promise(.failure(.decodingError(decodingError)))
                         case let apiError as APIError:
                             ToastManager.shared.show(apiError.localizedDescription)
-//                            showSnakbarMsg(message: apiError.localizedDescription, typeofMsg: .error)
                             promise(.failure(apiError))
                         default:
                             promise(.failure(.unknown))
@@ -339,7 +338,7 @@ class NetworkRequest {
             
             guard isInternetAvailable() else {
                 DispatchQueue.main.async {
-//                    UIApplication.topViewController()?.showAlertForNoInternet()
+                    AlertManager.shared.showAlert(title: "No Internet Connection", message: "Please check your internet connection.")
                 }
                 return promise(.failure(.noInternetConnection))
             }
@@ -419,7 +418,6 @@ class NetworkRequest {
                             promise(.failure(.decodingError(decodingError)))
                         case let apiError as APIError:
                             ToastManager.shared.show(apiError.localizedDescription)
-//                            showSnakbarMsg(message: apiError.localizedDescription, typeofMsg: .error)
                             promise(.failure(apiError))
                         default:
                             promise(.failure(.unknown))
@@ -477,17 +475,5 @@ extension NetworkRequest{
             return false
         }
         return reachability.connection != .unavailable
-    }
-}
-
-extension UIViewController {
-    func showAlertForNoInternet() {
-        let alert = UIAlertController(
-            title: "No Internet Connection",
-            message: "Please check your internet connection.",
-            preferredStyle: .alert
-        )
-        alert.addAction(UIAlertAction(title: "OK", style: .default))
-        present(alert, animated: true)
     }
 }

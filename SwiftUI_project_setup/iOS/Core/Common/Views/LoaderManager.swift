@@ -101,7 +101,7 @@ private struct LoaderOverlay: View {
             }
         }
         // Ensures this overlay always sits above content
-//        .allowsHitTesting(loader.isShowing) // blocks touches when showing
+        //        .allowsHitTesting(loader.isShowing) // blocks touches when showing
     }
 }
 
@@ -121,82 +121,3 @@ extension View {
         modifier(LoaderModifier())
     }
 }
-
-
-//class LoaderManager: ObservableObject {
-//    static let shared = LoaderManager() // still global if needed
-//
-//    @Published var isShowing: Bool = false
-//    @Published var text: String = ""
-//
-//    func showLoader(text: String = "") {
-//        DispatchQueue.main.async {
-//            self.text = text
-//            self.isShowing = true
-//        }
-//        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-//            withAnimation {
-//                self.hideLoader()
-//            }
-//        }
-//    }
-//
-//    func hideLoader() {
-//        DispatchQueue.main.async {
-//            self.isShowing = false
-//            self.text = ""
-//        }
-//    }
-//}
-//
-//struct LoaderOverlay: ViewModifier {
-//    @ObservedObject var loader = LoaderManager.shared
-//
-//    func body(content: Content) -> some View {
-//        ZStack {
-//            content
-//
-//            if loader.isShowing {
-//                LoaderView(text: loader.text)
-//            }
-//        }
-//    }
-//}
-
-//struct LoaderView: View {
-//    var text: String = ""
-//        var lottieName: String = "splash"
-//
-//        var body: some View {
-//            ZStack {
-//                // Transparent background
-//                Color.black.opacity(0.5)
-//                    .ignoresSafeArea()
-//
-//                VStack() {
-//                    // Lottie Animation
-//                    LottieView(name: lottieName, loopMode: .loop)
-//                        .frame(width: 200, height: 200)
-//
-//                    // Optional label
-//                    if !text.isEmpty {
-//                        Text(text)
-//                            .font(.system(size: 15, weight: .bold))
-//                            .foregroundColor(.gray)
-//                            .multilineTextAlignment(.center)
-//                    }
-//                }
-//            }
-//        }
-//}
-//
-//#Preview {
-//    LoaderView()
-//}
-
-//
-//extension View {
-//    func withLoader() -> some View {
-//        self.modifier(LoaderOverlay())
-//    }
-//}

@@ -7,50 +7,50 @@
 
 import SwiftUI
 
-        struct AddSubsriptionView1: View {
-            @State private var showModal = true
-            var body: some View {
-                ZStack(alignment: .bottom) {
-                    Color.gray.opacity(0.10).ignoresSafeArea()
-                    
-                    if showModal {
-                        CurvedModalAdaptiveView()
-                            .transition(.move(edge: .bottom))
-                    }
-                    
-//                    HStack {
-//                        Spacer()
-//                        Button(action: {}) {
-//                            Image(systemName: "plus")
-//                                .foregroundColor(.white)
-//                                .font(.system(size: 28, weight: .bold))
-//                                .frame(width: 60, height: 60)
-//                                .background(
-//                                    Circle()
-//                                        .fill(LinearGradient(
-//                                            colors: [Color.blue.opacity(0.8), Color.purple.opacity(0.8)],
-//                                            startPoint: .topLeading,
-//                                            endPoint: .bottomTrailing
-//                                        ))
-//                                        .shadow(radius: 8)
-//                                )
-//                                .padding(.bottom, 10)
-//                        }
-//                        Spacer()
-//                    }
-//                    .background(
-//                        BlurView(style: .systemMaterial)
-//                            .frame(height: 64)
-//                            .cornerRadius(26)
-//                            .padding(.horizontal, 30)
-//                    )
-//                    .padding(.bottom, 8)
-                }
+struct AddSubsriptionView: View {
+    @State private var showModal = true
+    var body: some View {
+        ZStack(alignment: .bottom) {
+            Color.gray.opacity(0.10).ignoresSafeArea()
+            
+            if showModal {
+                CurvedModalAdaptiveView()
+                    .transition(.move(edge: .bottom))
             }
+            
+            //                    HStack {
+            //                        Spacer()
+            //                        Button(action: {}) {
+            //                            Image(systemName: "plus")
+            //                                .foregroundColor(.white)
+            //                                .font(.system(size: 28, weight: .bold))
+            //                                .frame(width: 60, height: 60)
+            //                                .background(
+            //                                    Circle()
+            //                                        .fill(LinearGradient(
+            //                                            colors: [Color.blue.opacity(0.8), Color.purple.opacity(0.8)],
+            //                                            startPoint: .topLeading,
+            //                                            endPoint: .bottomTrailing
+            //                                        ))
+            //                                        .shadow(radius: 8)
+            //                                )
+            //                                .padding(.bottom, 10)
+            //                        }
+            //                        Spacer()
+            //                    }
+            //                    .background(
+            //                        BlurView(style: .systemMaterial)
+            //                            .frame(height: 64)
+            //                            .cornerRadius(26)
+            //                            .padding(.horizontal, 30)
+            //                    )
+            //                    .padding(.bottom, 8)
         }
+    }
+}
 
 #Preview {
-    AddSubsriptionView1()
+    AddSubsriptionView()
 }
 
 
@@ -120,7 +120,7 @@ struct CurvedModalAdaptiveView: View {
             Text("Add Subscription")
                 .font(.headline)
                 .padding(.top, 24)
-
+            
             Text("Choose how you’d like to add your subscription")
                 .font(.caption)
                 .foregroundColor(.secondary)

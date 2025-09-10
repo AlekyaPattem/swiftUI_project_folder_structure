@@ -13,17 +13,11 @@ struct LoginView: View {
     @State private var username: String = ""
     @State private var password: String = ""
     @State private var isPasswordVisible: Bool = false
-    @State private var showSheet = false
     
     var body: some View {
         NavigationStack{
             ScrollView{
                 VStack(spacing: 24) {
-                    
-                    Button("Show Bottom Sheet") {
-                                    showSheet.toggle()
-                                }
-                                .buttonStyle(.borderedProminent)
                     
                     // MARK: - Logo
                     Image(systemName: "person.circle.fill")
@@ -116,28 +110,6 @@ struct LoginView: View {
                     .padding(.bottom, 30)
                 }
                 .padding(.horizontal, 32)
-                .sheet(isPresented: $showSheet) {
-                    // Content of bottom sheet
-                    VStack(spacing: 20) {
-                        Text("This is a default Bottom Sheet")
-                            .font(.headline)
-                        Button("Close") {
-                            showSheet = false
-                        }
-                    }
-                    .presentationDetents([.medium, .large]) // 👈 sheet sizes
-                    .presentationDragIndicator(.visible)   // 👈 drag bar at top
-                    .padding()
-                }
-//                .sheet(isPresented: $showSheet) {
-//                    Form {
-//                        Section(header: Text("Options")) {
-//                            Toggle("Enable Notifications", isOn: .constant(true))
-//                            Toggle("Dark Mode", isOn: .constant(false))
-//                        }
-//                    }
-//                    .presentationDetents([.fraction(0.3), .medium, .large])
-//                }
             }
         }
     }
@@ -148,50 +120,3 @@ struct LoginView: View {
 }
 
 
-struct GridExample: View {
-    let items = Array(1...20)
-    
-    // Define grid layout (2 columns)
-    let columns = [
-        GridItem(.flexible()),  // first column
-        GridItem(.flexible())   // second column
-    ]
-    
-    var body: some View {
-        ScrollView {
-            LazyVGrid(columns: columns, spacing: 16) {
-                ForEach(items, id: \.self) { item in
-                    RoundedRectangle(cornerRadius: 8)
-                        .fill(Color.blue.opacity(0.7))
-                        .frame(height: 100)
-                        .overlay(Text("Item \(item)").foregroundColor(.white))
-                }
-            }
-            .padding()
-        }
-    }
-}
-
-struct HorizontalGridExample: View {
-    let items = Array(1...10)
-    
-    // Define grid layout (2 rows)
-    let rows = [
-        GridItem(.fixed(120)),
-//        GridItem(.fixed(120))
-    ]
-    
-    var body: some View {
-        ScrollView(.horizontal) {
-            LazyHGrid(rows: rows, spacing: 16) {
-                ForEach(items, id: \.self) { item in
-                    RoundedRectangle(cornerRadius: 8)
-                        .fill(Color.green.opacity(0.7))
-                        .frame(width: 120)
-                        .overlay(Text("Item \(item)").foregroundColor(.white))
-                }
-            }
-            .padding()
-        }
-    }
-}

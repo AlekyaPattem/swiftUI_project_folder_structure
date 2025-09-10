@@ -5,5 +5,6 @@
   Created by KSMACMINI-019 on 09/09/25.
   
 */
-"test" = "username";
-"test2" = "English localization";
+"test" = "English Localization";
+"test2" = "English localization2";
+"showLoader" = "Show Loader";

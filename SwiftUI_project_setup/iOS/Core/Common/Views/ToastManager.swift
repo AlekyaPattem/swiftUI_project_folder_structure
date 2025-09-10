@@ -7,7 +7,6 @@
 
 import SwiftUI
 
-
 final class ToastManager: ObservableObject {
     static let shared = ToastManager()
     
